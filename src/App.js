@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useContext } from "react";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
+import { Button, Row, Col } from "react-bootstrap";
+import { TodoFormContext } from "./context/todoFormContext";
+import "./App.css";
 
 function App() {
+  const { setShowModal } = useContext(TodoFormContext);
+
+  const handleShow = () => {
+    setShowModal(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h1 className="app-title">Lista de Tareas</h1>
+      <div className="my-5">
+        <Row className="mb-3">
+          <Col className="add-task-button-container">
+            <div className="buttonsContainer">
+              <Button variant="primary" onClick={handleShow}>
+                Agregar Tarea
+              </Button>
+            </div>
+          </Col>
+        </Row>
+        <TodoForm />
+        <TodoList />
+      </div>
     </div>
   );
 }

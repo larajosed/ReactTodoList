@@ -1,0 +1,118 @@
+.todo-form-modal .modal-content {
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.todo-form-modal .modal-header {
+  background-color: #2c3e50;
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: none;
+  padding: 20px 25px;
+}
+
+.todo-form-modal .modal-title {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.todo-form-modal .modal-header .btn-close {
+  color: white;
+  opacity: 1;
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.todo-form-modal .modal-body {
+  padding: 25px 30px;
+  background-color: #fcfcfc;
+}
+
+.todo-form-modal .form-group {
+  margin-bottom: 20px;
+}
+
+.todo-form-modal .form-label {
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.todo-form-modal .form-control {
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  padding: 12px 15px;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.todo-form-modal .form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+  outline: none;
+}
+
+.todo-form-modal .form-check {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.todo-form-modal .form-check-input {
+  width: 1.25em;
+  height: 1.25em;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.todo-form-modal .form-check-label {
+  color: #34495e;
+  font-size: 1rem;
+}
+
+.todo-form-modal .modal-body .col-md-6:last-child {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.todo-form-modal .btn {
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo-form-modal .btn-primary {
+  background-color: #27ae60;
+  border-color: #27ae60;
+  color: white;
+}
+
+.todo-form-modal .btn-primary:hover {
+  background-color: #229954;
+  border-color: #1f8a4e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.todo-form-modal .btn-secondary {
+  background-color: #7f8c8d;
+  border-color: #7f8c8d;
+  color: white;
+}
+
+.todo-form-modal .btn-secondary:hover {
+  background-color: #6c757d;
+  border-color: #5a6268;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
