@@ -27,7 +27,7 @@ function TodoItem({ refresh, task }) {
   };
 
   const taskCardClass = `todoItemCard ${
-    task.completada ? "completedTask" : "incompleteTask"
+    task.completed ? "completedTask" : "incompleteTask"
   }`;
 
   return (
@@ -35,16 +35,20 @@ function TodoItem({ refresh, task }) {
       <div className={taskCardClass}>
         <div>
           <div className="taskInfo">
-            <strong>ID:</strong> {task.id}
+            <strong>ID: </strong>
+            {task.id}
           </div>
           <div>
-            <strong>Tarea:</strong> {task.texto}
+            <strong>Tarea: </strong>
+            {task.text}
           </div>
           <div>
-            <strong>Completada:</strong> {task.completada ? "Sí" : "No"}
+            <strong>Completado: </strong>
+            {task.completed ? "Sí" : "No"}
           </div>
           <div>
-            <strong>Asignada a:</strong> {task.assignedTo}
+            <strong>Asignada a: </strong>
+            {task.assignedTo}
           </div>
         </div>
         <div className="buttonsContainer">

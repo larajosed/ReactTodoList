@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import todoService from "../services/todoService";
 import TodoItem from "./TodoItem";
-import { Form, ListGroup } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { TodoFormContext } from "../context/todoFormContext";
 import "../css/TodoList.css";
 
-function TodoList({ searchBarClassName }) {
+function TodoList() {
   const [tasks, setTasks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const { refreshTasks, setRefreshTasks } = useContext(TodoFormContext);
@@ -16,8 +16,8 @@ function TodoList({ searchBarClassName }) {
         if (searchTerm) {
           data = data.filter(
             (task) =>
-              (task.texto &&
-                task.texto.toLowerCase().includes(searchTerm.toLowerCase())) ||
+              (task.text &&
+                task.text.toLowerCase().includes(searchTerm.toLowerCase())) ||
               (task.assignedTo &&
                 task.assignedTo
                   .toLowerCase()
@@ -38,7 +38,7 @@ function TodoList({ searchBarClassName }) {
   return (
     <>
       <div>
-        <Form.Group className={searchBarClassName}>
+        <Form.Group>
           <Form.Control
             type="text"
             placeholder="Buscar tarea por nombre o persona..."

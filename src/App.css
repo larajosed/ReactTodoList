@@ -90,3 +90,7 @@ body {
   color: #7f8c8d;
   margin-top: 20px;
 }
+
+.footer {
+  text-align: end;
+}

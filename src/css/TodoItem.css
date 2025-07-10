@@ -159,3 +159,10 @@
   background-color: #a93226;
   border-color: #93221b;
 }
+
+img {
+  margin: 5px;
+  display: inline-block;
+  max-width: 1.5em;
+  height: auto;
+}

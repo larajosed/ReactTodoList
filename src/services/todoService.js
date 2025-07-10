@@ -1,16 +1,10 @@
 const LOCAL_STORAGE_KEY = "myTodoAppTasks";
 
 const loadTasksFromLocalStorage = () => {
-  try {
-    const serializedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
-    return serializedTasks ? JSON.parse(serializedTasks) : [];
-  } catch (error) {
-    console.error("Error al cargar tareas desde localStorage:", error);
-    return []; // En caso de error, devuelve un array vacío
-  }
+  const serializedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
+  return serializedTasks ? JSON.parse(serializedTasks) : [];
 };
 
-// Función auxiliar para guardar tareas en localStorage
 const saveTasksToLocalStorage = (tasks) => {
   try {
     const serializedTasks = JSON.stringify(tasks);
@@ -20,7 +14,6 @@ const saveTasksToLocalStorage = (tasks) => {
   }
 };
 
-// Inicializa mockTasks cargando desde localStorage al inicio
 let mockTasks = loadTasksFromLocalStorage();
 
 const todoService = {
@@ -41,12 +34,9 @@ const todoService = {
       if (taskData.id) {
         const index = mockTasks.findIndex((task) => task.id === taskData.id);
         if (index !== -1) {
-          // Fusionamos los datos existentes con los nuevos datos de taskData.
-          // Esto actualiza las propiedades que vienen en taskData y mantiene las que no. Destructuracion de objetos
-
           mockTasks[index] = { ...mockTasks[index], ...taskData };
           saveTasksToLocalStorage(mockTasks);
-          resolve(mockTasks[index]); // Resolvemos con la tarea actualizada
+          resolve(mockTasks[index]);
         } else {
           reject(new Error("Tarea no encontrada para editar."));
         }
@@ -61,10 +51,34 @@ const todoService = {
           ...taskData,
         };
         mockTasks.push(newTask);
-        saveTasksToLocalStorage(mockTasks); //
+        saveTasksToLocalStorage(mockTasks);
         resolve(newTask);
       }
     });
+  },
+  initMockTasks: () => {
+    const tasckInit = [
+      {
+        id: 1,
+        text: "Visitar larajosd.github.io",
+        completed: false,
+        assignedTo: "Todos",
+      },
+      {
+        id: 2,
+        text: "Llamar a José Lara para entrevistarle",
+        completed: false,
+        assignedTo: "Recursos Humanos",
+      },
+      {
+        id: 3,
+        text: "Buscar memes de gatitos",
+        completed: true,
+        assignedTo: "José",
+      },
+    ];
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasckInit));
+    mockTasks = loadTasksFromLocalStorage();
   },
 };
 

@@ -20,9 +20,9 @@ function TodoForm() {
 
   useEffect(() => {
     if (taskToEdit) {
-      setTaskName(taskToEdit.texto || "");
+      setTaskName(taskToEdit.text || "");
       setAssignedTo(taskToEdit.assignedTo || "");
-      setCompleted(taskToEdit.completada || false);
+      setCompleted(taskToEdit.completed || false);
       setIsEditing(true);
     } else {
       resetTaskFields();
@@ -32,8 +32,8 @@ function TodoForm() {
 
   const addTask = () => {
     let taskData = {
-      texto: taskName,
-      completada: completed,
+      text: taskName,
+      completed: completed,
       assignedTo: assignedTo,
     };
     if (isEditing && taskToEdit.id) {
