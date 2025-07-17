@@ -60,7 +60,7 @@ const todoService = {
     const tasckInit = [
       {
         id: 1,
-        text: "Visitar larajosd.github.io",
+        text: "Visitar larajosed.github.io",
         completed: false,
         assignedTo: "Todos",
       },
