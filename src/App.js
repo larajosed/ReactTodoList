@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { AppThemeContext } from "./context/appThemeContext";
-import { MdOutlineWbSunny } from "react-icons/md";
-import { FaMoon } from "react-icons/fa6";
 import "./App.css";
 import TodoListView from "./views/TodoListView";
+import TodoDarkLightModeButton from "./components/TodoDarkLightModeButton";
 
 function App() {
   const { theme, toggleTheme } = useContext(AppThemeContext);
@@ -12,14 +11,7 @@ function App() {
     <div className={`body ${theme}`}>
       <div className={`app-container ${theme}`}>
         <div className={`App ${theme}`}>
-          <div className="buttonsContainer">
-            {" "}
-            {theme === "light" ? (
-              <FaMoon onClick={toggleTheme} />
-            ) : (
-              <MdOutlineWbSunny onClick={toggleTheme} />
-            )}
-          </div>
+          <TodoDarkLightModeButton />
           <TodoListView />
           <div className="footer">
             Powered By{" "}
