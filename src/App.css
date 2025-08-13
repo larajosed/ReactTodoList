@@ -1,3 +1,11 @@
+.body.light {
+  background-color: #fff;
+}
+
+.body.dark {
+  background-color: #222;
+}
+
 .App {
   text-align: center;
 }
@@ -5,6 +13,16 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.App.light {
+  background-color: #fff;
+  color: #606060;
+}
+
+.App.dark {
+  background-color: #222;
+  color: #fff;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -47,19 +65,18 @@ body {
 }
 
 .app-container {
-  background-color: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  /*border-radius: 15px;*/
+  /*box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);*/
+  /*padding: 30px;*/
   max-width: 1200px;
-  margin: 40px auto;
-  box-sizing: border-box;
+  margin: 0px auto;
+  /*box-sizing: border-box; */
 }
 
 .app-title {
   font-size: 2.8rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: #6c6c6c;
   text-align: center;
   margin-bottom: 30px;
 }
