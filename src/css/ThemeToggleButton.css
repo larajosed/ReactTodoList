@@ -1,0 +1,9 @@
+.buttonsContainer {
+  cursor: pointer;
+}
+
+.mode {
+  height: 25px;
+  width: 25px;
+  color: #929292;
+}
