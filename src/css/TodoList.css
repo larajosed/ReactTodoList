@@ -4,7 +4,6 @@
   gap: 20px;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 20px;
 }
 
 .todoItemCard {
@@ -12,6 +11,19 @@
   max-width: calc(33.333% - 20px);
   min-width: 280px;
   box-sizing: border-box;
+}
+
+.search {
+  margin-left: 5px;
+}
+
+.App.dark .input-background {
+  background-color: #1b2840;
+  border: none;
+}
+
+.App.dark .input-background::placeholder {
+  color: #bdbcbc;
 }
 
 @media (max-width: 1200px) {

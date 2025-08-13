@@ -35,23 +35,28 @@ function TodoList() {
     setRefreshTasks(!refreshTasks);
   }
 
-  return (
-    <>
-      <div>
-        <Form.Group>
-          <Form.Control
-            type="text"
-            placeholder="Buscar tarea por nombre o persona..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </Form.Group>
+  console.log("rerendeing full component");
+  const completedTask = tasks.filter((task) => task.completed);
+  const incompletedTask = tasks.filter((task) => !task.completed);
 
-        {tasks.length === 0 ? (
-          <p>No hay tareas para mostrar.</p>
-        ) : (
+  return (
+    <div>
+      <Form.Group className="col-md-3 search">
+        <Form.Control
+          className="input-background"
+          type="text"
+          placeholder="Buscar tarea por nombre o persona..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </Form.Group>
+
+      {tasks.length === 0 && <p>No hay tareas para mostrar.</p>}
+      {incompletedTask.length > 0 && (
+        <>
+          <h3 className="title"> Tareas Pendientes</h3>
           <div className="todo-list-container">
-            {tasks.map((task) => (
+            {incompletedTask.map((task) => (
               <TodoItem
                 key={task.id}
                 task={task}
@@ -59,9 +64,24 @@ function TodoList() {
               />
             ))}
           </div>
-        )}
-      </div>
-    </>
+        </>
+      )}
+      {completedTask.length > 0 && (
+        <>
+          {" "}
+          <h3 className="title"> Tareas Completadas</h3>
+          <div className="todo-list-container">
+            {completedTask.map((task) => (
+              <TodoItem
+                key={task.id}
+                task={task}
+                refresh={tooggleRefreshTasks}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppThemeContext } from "./context/appThemeContext";
 import "./App.css";
 import TodoListView from "./views/TodoListView";
-import TodoDarkLightModeButton from "./components/TodoDarkLightModeButton";
+import ThemeToggleButton from "./components/ThemeToggleButton";
 import TodoFooter from "./components/footer/TodoFooter";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
     <div className={`body ${theme}`}>
       <div className={`app-container ${theme}`}>
         <div className={`App ${theme}`}>
-          <TodoDarkLightModeButton />
+          <ThemeToggleButton />
           <TodoListView />
           <TodoFooter />
         </div>

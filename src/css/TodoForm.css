@@ -24,22 +24,6 @@
   filter: invert(1) grayscale(100%) brightness(200%);
 }
 
-.todo-form-modal .modal-body {
-  padding: 25px 30px;
-  background-color: #fcfcfc;
-}
-
-.todo-form-modal .form-group {
-  margin-bottom: 20px;
-}
-
-.todo-form-modal .form-label {
-  font-weight: 600;
-  color: #34495e;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
-}
-
 .todo-form-modal .form-control {
   border-radius: 8px;
   border: 1px solid #dcdcdc;
@@ -52,6 +36,59 @@
   border-color: #3498db;
   box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
   outline: none;
+}
+
+.todo-form-modal .form-label {
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.todo-form-modal .modal-body {
+  padding: 25px 30px;
+  background-color: #fcfcfc;
+}
+
+.todo-form-modal .modal-body .col-md-6:last-child {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 15px;
+}
+
+.dark .modal-body {
+  background-color: #111827;
+}
+
+.dark .input-background {
+  background-color: #1b2840;
+}
+
+.dark .form-control {
+  border: none;
+  color: #bdbcbc;
+}
+
+.dark .input-background::placeholder {
+  color: #bdbcbc;
+}
+
+.dark .title {
+  color: #bdbcbc;
+}
+
+.dark .title {
+  color: #bdbcbc;
+}
+
+.dark .form-label {
+  color: #bdbcbc;
+}
+
+.todo-form-modal .form-group {
+  margin-bottom: 20px;
 }
 
 .todo-form-modal .form-check {
@@ -69,17 +106,8 @@
 }
 
 .todo-form-modal .form-check-label {
-  color: #34495e;
+  color: #72767a;
   font-size: 1rem;
-}
-
-.todo-form-modal .modal-body .col-md-6:last-child {
-  display: flex;
-  justify-content: flex-end;
-  gap: 15px;
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #ecf0f1;
 }
 
 .todo-form-modal .btn {

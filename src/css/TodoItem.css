@@ -15,6 +15,15 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
+.App.dark .todoItemCard {
+  background-color: #1b2840;
+  color: #bdbcbc;
+}
+
+.App.dark .taskInfo {
+  color: #bdbcbc;
+}
+
 .taskInfo {
   margin-bottom: 20px;
   font-size: 1rem;
@@ -41,6 +50,7 @@
 
 .incompleteTask {
   border-color: #c0392b;
+  color: #7f8c8d;
 }
 
 .buttonsContainer {
@@ -49,6 +59,7 @@
   gap: 12px;
   margin-top: auto;
   padding-top: 10px;
+  margin-right: 5px;
 }
 
 .buttonsContainer .btn {

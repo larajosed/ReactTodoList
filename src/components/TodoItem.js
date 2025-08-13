@@ -35,7 +35,7 @@ function TodoItem({ refresh, task }) {
       <div className={taskCardClass}>
         <div>
           <div className="taskInfo">
-            <strong>ID: </strong>
+            ID:
             {task.id}
           </div>
           <div>
