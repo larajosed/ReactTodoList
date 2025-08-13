@@ -3,6 +3,7 @@ import { AppThemeContext } from "./context/appThemeContext";
 import "./App.css";
 import TodoListView from "./views/TodoListView";
 import TodoDarkLightModeButton from "./components/TodoDarkLightModeButton";
+import TodoFooter from "./components/footer/TodoFooter";
 
 function App() {
   const { theme, toggleTheme } = useContext(AppThemeContext);
@@ -13,16 +14,7 @@ function App() {
         <div className={`App ${theme}`}>
           <TodoDarkLightModeButton />
           <TodoListView />
-          <div className="footer">
-            Powered By{" "}
-            <a href="https://larajosed.github.io/#/" target="blank">
-              José Daniel Lara Meza{" "}
-              <img
-                src="https://raw.githubusercontent.com/larajosed/larajosed.github.io/refs/heads/main/src/assets/images/JL.png"
-                alt="JL"
-              ></img>
-            </a>
-          </div>
+          <TodoFooter />
         </div>
       </div>
     </div>
