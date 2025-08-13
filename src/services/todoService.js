@@ -1,3 +1,5 @@
+import Task from "../model/taskModel";
+
 const LOCAL_STORAGE_KEY = "myTodoAppTasks";
 
 const loadTasksFromLocalStorage = () => {
@@ -57,27 +59,44 @@ const todoService = {
     });
   },
   initMockTasks: () => {
-    const tasckInit = [
-      {
-        id: 1,
-        text: "Visitar larajosed.github.io",
-        completed: false,
-        assignedTo: "Todos",
-      },
-      {
-        id: 2,
-        text: "Llamar a José Lara para entrevistarle",
-        completed: false,
-        assignedTo: "Recursos Humanos",
-      },
-      {
-        id: 3,
-        text: "Buscar memes de gatitos",
-        completed: true,
-        assignedTo: "José",
-      },
-    ];
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasckInit));
+    const task1 = new Task(
+      1,
+      "Visitar larajosed.github.io",
+      false,
+      "Todos",
+      "Alta",
+      "Visitar en casa",
+      "Nada aun",
+      new Date(),
+      new Date(),
+      new Date()
+    );
+    const task2 = new Task(
+      2,
+      "Llamar a José Lara para entrevistarle",
+      false,
+      "Recursos Humanos",
+      "Alta",
+      "Visitar en casa",
+      "Nada aun",
+      new Date(),
+      new Date(),
+      new Date()
+    );
+    const task3 = new Task(
+      3,
+      "Buscar memes de gatitos",
+      true,
+      "José",
+      "Alta",
+      "Visitar en casa",
+      "Nada aun",
+      new Date(),
+      new Date(),
+      new Date()
+    );
+    Task = [task1, task2, task3];
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(Task));
     mockTasks = loadTasksFromLocalStorage();
   },
 };
