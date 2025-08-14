@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
 
 export const TodoFormContext = React.createContext();
 
@@ -6,6 +6,7 @@ export function TodoFormContextProvider(props) {
   const [showModal, setShowModal] = useState(false);
   const [refreshTasks, setRefreshTasks] = useState(true);
   const [taskToEdit, setTaskToEdit] = useState(null);
+  const [showInfo, setShowInfo] = useState(false);
 
   const contextValue = {
     showModal,
@@ -14,6 +15,8 @@ export function TodoFormContextProvider(props) {
     setRefreshTasks,
     taskToEdit,
     setTaskToEdit,
+    showInfo,
+    setShowInfo,
   };
 
   return (

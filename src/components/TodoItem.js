@@ -6,7 +6,8 @@ import "../css/TodoItem.css";
 
 function TodoItem({ refresh, task }) {
   const [show, setShow] = useState(false);
-  const { setTaskToEdit, setShowModal } = useContext(TodoFormContext);
+  const { setTaskToEdit, setShowModal, setShowInfo } =
+    useContext(TodoFormContext);
 
   const handleClose = () => {
     setShow(false);
@@ -24,6 +25,10 @@ function TodoItem({ refresh, task }) {
   const updateTask = () => {
     setShowModal(true);
     setTaskToEdit(task);
+  };
+
+  const showInfoModal = () => {
+    setShowInfo(true);
   };
 
   const taskCardClass = `todoItemCard ${
@@ -52,6 +57,14 @@ function TodoItem({ refresh, task }) {
           </div>
         </div>
         <div className="buttonsContainer">
+          <Button
+            variant="secondary"
+            onClick={() => {
+              showInfoModal();
+            }}
+          >
+            Mas información
+          </Button>
           <Button
             variant="danger"
             onClick={() => {
