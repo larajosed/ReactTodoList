@@ -3,7 +3,7 @@ import { FaMoon } from "react-icons/fa6";
 import { useContext } from "react";
 import { AppThemeContext } from "../context/appThemeContext";
 import "../css/ThemeToggleButton.css";
-import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function ThemeToggleButton() {
   const { theme, toggleTheme } = useContext(AppThemeContext);
