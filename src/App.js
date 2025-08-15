@@ -6,7 +6,7 @@ import ThemeToggleButton from "./components/ThemeToggleButton";
 import TodoFooter from "./components/footer/TodoFooter";
 
 function App() {
-  const { theme, toggleTheme } = useContext(AppThemeContext);
+  const { theme } = useContext(AppThemeContext);
 
   return (
     <div className={`body ${theme}`}>

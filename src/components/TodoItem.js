@@ -1,12 +1,15 @@
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, OverlayTrigger, Tooltip } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import todoService from "../services/todoService";
 import { TodoFormContext } from "../context/todoFormContext";
 import "../css/TodoItem.css";
+import { BsPencil } from "react-icons/bs";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import { IoEyeOutline } from "react-icons/io5";
 
 function TodoItem({ refresh, task }) {
   const [show, setShow] = useState(false);
-  const { setTaskToEdit, setShowModal, setShowInfo } =
+  const { setTaskToEdit, setShowModal, setShowInfo, setShowSideBar } =
     useContext(TodoFormContext);
 
   const handleClose = () => {
@@ -16,6 +19,8 @@ function TodoItem({ refresh, task }) {
   const handleShow = () => {
     setShow(true);
   };
+
+  const showSidebar = () => setShowSideBar(true);
 
   const deleteTask = () => {
     todoService.deleteTask(task.id).then(refresh());
@@ -27,13 +32,27 @@ function TodoItem({ refresh, task }) {
     setTaskToEdit(task);
   };
 
-  const showInfoModal = () => {
-    setShowInfo(true);
-  };
-
   const taskCardClass = `todoItemCard ${
     task.completed ? "completedTask" : "incompleteTask"
   }`;
+
+  const moreInfo = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Ver mas información
+    </Tooltip>
+  );
+
+  const deleteTasks = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Eliminar tarea
+    </Tooltip>
+  );
+
+  const editTask = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Editar tarea
+    </Tooltip>
+  );
 
   return (
     <>
@@ -56,31 +75,45 @@ function TodoItem({ refresh, task }) {
             {task.assignedTo}
           </div>
         </div>
+
         <div className="buttonsContainer">
-          <Button
-            variant="secondary"
-            onClick={() => {
-              showInfoModal();
-            }}
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 250, hide: 400 }}
+            overlay={moreInfo}
           >
-            Mas información
-          </Button>
-          <Button
-            variant="danger"
-            onClick={() => {
-              handleShow();
-            }}
+            <Button variant="success" onClick={showSidebar}>
+              <IoEyeOutline />
+            </Button>
+          </OverlayTrigger>
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 250, hide: 400 }}
+            overlay={deleteTasks}
           >
-            Eliminar
-          </Button>
-          <Button
-            variant="primary"
-            onClick={() => {
-              updateTask();
-            }}
+            <Button
+              variant="danger"
+              onClick={() => {
+                handleShow();
+              }}
+            >
+              <RiDeleteBin2Line />
+            </Button>
+          </OverlayTrigger>
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 250, hide: 400 }}
+            overlay={editTask}
           >
-            Editar
-          </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                updateTask();
+              }}
+            >
+              <BsPencil />
+            </Button>
+          </OverlayTrigger>
         </div>
         <Modal
           centered

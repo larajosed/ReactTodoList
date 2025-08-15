@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import { TodoFormContext } from "../context/todoFormContext";
 import { useContext } from "react";
+import { IoMdAddCircleOutline } from "react-icons/io";
 
 function TodoFormModalButton() {
   const { setShowModal } = useContext(TodoFormContext);
@@ -10,7 +11,7 @@ function TodoFormModalButton() {
 
   return (
     <Button variant="primary" onClick={handleShow}>
-      Agregar Tarea
+      Agregar tarea <IoMdAddCircleOutline />
     </Button>
   );
 }

@@ -3,6 +3,7 @@ import TodoForm from "../components/TodoForm";
 import { Row, Col } from "react-bootstrap";
 import { TodoFormContextProvider } from "../context/todoFormContext";
 import TodoFormModalButton from "../components/TodoFormModalButton";
+import SidebarTask from "../components/SidebarTask";
 
 function TodoListView() {
   return (
@@ -18,6 +19,7 @@ function TodoListView() {
         </Row>
         <TodoForm />
         <TodoList />
+        <SidebarTask />
       </div>
     </TodoFormContextProvider>
   );
