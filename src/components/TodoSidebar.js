@@ -12,18 +12,8 @@ import {
   BsCalendar2Date,
   BsCalendar2DateFill,
 } from "react-icons/bs";
-import {
-  FaCheckCircle,
-  FaTimesCircle,
-  FaRegListAlt,
-  FaRegClock,
-} from "react-icons/fa";
-import {
-  MdOutlineDescription,
-  MdOutlineAssignmentInd,
-  MdLowPriority,
-} from "react-icons/md";
-import { GrCompliance } from "react-icons/gr";
+import { FaCheckCircle, FaRegListAlt, FaRegClock } from "react-icons/fa";
+import { MdOutlineAssignmentInd, MdLowPriority } from "react-icons/md";
 import { LuNotebookPen } from "react-icons/lu";
 import moment from "moment";
 
@@ -59,9 +49,36 @@ function TodoSidebar() {
     ? moment(selectedTask.completionDate).format("DD/MM/YYYY")
     : "No establecida";
 
+  const dueDate = selectedTask.dueDate ? moment(selectedTask.dueDate) : null;
+  const creationDate = selectedTask.creationDate
+    ? moment(selectedTask.creationDate)
+    : moment();
+  const daysRemaining =
+    dueDate && creationDate
+      ? dueDate.diff(creationDate, "days")
+      : "No disponible";
+
   const statusTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       Estado: {selectedTask.status || "No disponible"}
+    </Tooltip>
+  );
+
+  const priorityTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Prioridad : {selectedTask.priority || "No disponible"}
+    </Tooltip>
+  );
+
+  const assignedTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Asignado a : {selectedTask.assignedTo || "No disponible"}
+    </Tooltip>
+  );
+
+  const dueDateTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Fecha de finalización: {formattedDueDate || "No disponible"}
     </Tooltip>
   );
 
@@ -90,55 +107,68 @@ function TodoSidebar() {
           <Offcanvas.Title>Detalles de la Tarea</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className={theme}>
-          <h5>{selectedTask.taskName}</h5>
-
-          <div className="container-icons">
+          <h5>
+            {selectedTask.taskName}{" "}
             <OverlayTrigger
               placement="bottom"
               delay={{ show: 250, hide: 400 }}
               overlay={statusTooltip}
             >
-              <p>
-                <strong>Estado:</strong>{" "}
-                {getTaskStatusIcon(selectedTask.status)}
-              </p>
+              {getTaskStatusIcon(selectedTask.status)}
             </OverlayTrigger>
-            <div>
-              {" "}
-              <MdOutlineAssignmentInd />
-              {selectedTask.assignedTo}
-            </div>
-            <div>
-              {" "}
-              <MdLowPriority /> {getPriorityIcon(selectedTask.priority)}
-            </div>
+          </h5>
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 250, hide: 400 }}
+            overlay={dueDateTooltip}
+          >
+            <p className="textDayLimit">
+              {daysRemaining > 0 ? (
+                `Quedan ${daysRemaining} días para la Finalización`
+              ) : (
+                <span style={{ color: "red" }}>
+                  La tarea esta retrasada por {Math.abs(daysRemaining)} días.
+                </span>
+              )}
+            </p>
+          </OverlayTrigger>
+          <div className="container-icons">
+            <OverlayTrigger
+              placement="bottom"
+              delay={{ show: 250, hide: 400 }}
+              overlay={assignedTooltip}
+            >
+              <div className="icons">
+                {" "}
+                <MdOutlineAssignmentInd />
+                {selectedTask.assignedTo}
+              </div>
+            </OverlayTrigger>
+            <OverlayTrigger
+              placement="bottom"
+              delay={{ show: 250, hide: 400 }}
+              overlay={priorityTooltip}
+            >
+              <div>
+                {" "}
+                <MdLowPriority /> {getPriorityIcon(selectedTask.priority)}
+              </div>
+            </OverlayTrigger>
           </div>
 
-          <p>
-            <strong>
-              <pre style={{ fontFamily: "system-ui" }}>
-                {selectedTask.description}
-              </pre>
-            </strong>
-          </p>
-
-          <p>
-            <BsCalendarDate />
-            <strong>Fecha Límite:</strong> {formattedDueDate}
-          </p>
-          <p>
+          <div className="descriptionBox">
+            <pre className="textBox">
+              {selectedTask.description || "Esta tarea no tiene descripción."}
+            </pre>
+          </div>
+          <div>
             <LuNotebookPen />
             <strong>Nota:</strong>
-            <pre style={{ fontFamily: "system-ui" }}> {selectedTask.note}</pre>
-          </p>
-          <p>
-            <BsCalendar2Date />
-            <strong>Fecha de Creación:</strong> {formattedCreationDate}
-          </p>
-          <p>
-            <BsCalendar2DateFill />
-            <strong>Fecha de Finalización:</strong> {formattedCompletionDate}
-          </p>
+            <pre style={{ fontFamily: "system-ui" }}>
+              {" "}
+              {selectedTask.note || "Esta tarea no tiene notas."}
+            </pre>
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </>
