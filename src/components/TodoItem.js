@@ -9,7 +9,7 @@ import { IoEyeOutline } from "react-icons/io5";
 
 function TodoItem({ refresh, task }) {
   const [show, setShow] = useState(false);
-  const { setTaskToEdit, setShowModal, setShowInfo, setShowSideBar } =
+  const { setTaskToEdit, setShowModal, setShowSideBar, setSelectedTask } =
     useContext(TodoFormContext);
 
   const handleClose = () => {
@@ -21,6 +21,7 @@ function TodoItem({ refresh, task }) {
   };
 
   const showSidebar = () => setShowSideBar(true);
+  setSelectedTask(task);
 
   const deleteTask = () => {
     todoService.deleteTask(task.id).then(refresh());
@@ -64,7 +65,7 @@ function TodoItem({ refresh, task }) {
           </div>
           <div>
             <strong>Tarea: </strong>
-            {task.text}
+            {task.taskName}
           </div>
           <div>
             <strong>Completado: </strong>

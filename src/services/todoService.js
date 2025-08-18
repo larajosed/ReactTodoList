@@ -95,8 +95,8 @@ const todoService = {
       new Date(),
       new Date()
     );
-    Task = [task1, task2, task3];
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(Task));
+    const tasksArray = [task1, task2, task3];
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasksArray));
     mockTasks = loadTasksFromLocalStorage();
   },
 };
