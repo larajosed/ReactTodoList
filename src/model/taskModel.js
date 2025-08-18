@@ -1,22 +1,22 @@
 export default class Task {
   constructor(
     id,
-    task,
+    taskName,
     completed,
-    assigned,
+    assignedTo,
     priority,
-    descriptiom,
+    description,
     note,
     creationDate,
     dueDate,
     completionDate
   ) {
     this.id = id;
-    this.task = task;
+    this.taskName = taskName;
     this.completed = completed;
-    this.assigned = assigned;
+    this.assignedTo = assignedTo;
     this.priority = priority;
-    this.descriptiom = descriptiom;
+    this.description = description;
     this.note = note;
     this.creationDate = creationDate;
     this.dueDate = dueDate;

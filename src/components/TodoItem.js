@@ -20,8 +20,10 @@ function TodoItem({ refresh, task }) {
     setShow(true);
   };
 
-  const showSidebar = () => setShowSideBar(true);
-  setSelectedTask(task);
+  const showSidebar = () => {
+    setShowSideBar(true);
+    setSelectedTask(task);
+  };
 
   const deleteTask = () => {
     todoService.deleteTask(task.id).then(refresh());

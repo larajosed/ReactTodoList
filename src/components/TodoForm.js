@@ -14,17 +14,32 @@ function TodoForm() {
     taskToEdit,
     setTaskToEdit,
   } = useContext(TodoFormContext);
+  const { theme } = useContext(AppThemeContext);
   const [taskName, setTaskName] = useState("");
   const [assignedTo, setAssignedTo] = useState("");
   const [completed, setCompleted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const { theme } = useContext(AppThemeContext);
+  const [priority, setPriority] = useState("");
+  const [description, setDescription] = useState("");
+  const [note, setNote] = useState("");
+  const [creationDate, setCreationDate] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [completionDate, setCompletionDate] = useState("");
+  const [assigned, setAssigned] = useState("");
 
   useEffect(() => {
     if (taskToEdit) {
-      setTaskName(taskToEdit.text || "");
-      setAssignedTo(taskToEdit.assignedTo || "");
+      setTaskName(taskToEdit.taskName || "");
+      setAssignedTo(taskToEdit.assigned || "");
       setCompleted(taskToEdit.completed || false);
+      setPriority(taskToEdit.priority || "");
+      setDescription(taskToEdit.description || "");
+      setNote(taskToEdit.note || "");
+      setCreationDate(taskToEdit.creationDate || "");
+      setDueDate(taskToEdit.dueDate || "");
+      setCompletionDate(taskToEdit.completionDate || "");
+      setAssigned(taskToEdit.assigned || "");
+
       setIsEditing(true);
     } else {
       resetTaskFields();
@@ -34,10 +49,19 @@ function TodoForm() {
 
   const addTask = () => {
     let taskData = {
-      text: taskName,
+      taskName: taskName,
       completed: completed,
-      assignedTo: assignedTo,
+      assigned: assigned,
+      priority: priority,
+      description: description,
+      note: note,
+      dueDate: dueDate,
+      completionDate: completionDate,
     };
+
+    if (!isEditing) {
+      taskData.creationDate = new Date().toISOString().slice(0, 10);
+    }
     if (isEditing && taskToEdit.id) {
       taskData = { ...taskData, id: taskToEdit.id };
     }
@@ -52,8 +76,14 @@ function TodoForm() {
 
   const resetTaskFields = () => {
     setTaskName("");
-    setAssignedTo("");
+    setAssigned("");
     setCompleted(false);
+    setPriority("");
+    setDescription("");
+    setNote("");
+    setCreationDate("");
+    setDueDate("");
+    setCompletionDate("");
   };
 
   const handleCloseModal = () => {
@@ -74,7 +104,7 @@ function TodoForm() {
       </Modal.Header>
       <Modal.Body>
         <Form className="row">
-          <Form.Group className="col-md-6">
+          <Form.Group className="col-md-6 mb-3">
             <Form.Label className="title">Nombre de la Tarea:</Form.Label>
             <Form.Control
               className="input-background"
@@ -85,45 +115,79 @@ function TodoForm() {
               onChange={(e) => setTaskName(e.target.value)}
             />
           </Form.Group>
-          <FormGroup>
-            <FormLabel>Descripción:</FormLabel>
-            <Form.Control
-              className="input-background"
-              type="text"
-              placeholder="Ingresa la descripción de la tarea"
-              required
-            />
-          </FormGroup>
-          <Form.Group className="col-md-5">
-            <Form.Label>Asignado a:</Form.Label>
+
+          <Form.Group className="col-md-6 mb-3">
+            <Form.Label className="title">Asignado a:</Form.Label>
             <Form.Control
               className="input-background"
               type="text"
               placeholder="Persona asignada"
               required
-              value={assignedTo}
-              onChange={(e) => setAssignedTo(e.target.value)}
+              value={assigned}
+              onChange={(e) => setAssigned(e.target.value)}
             />
           </Form.Group>
-          <FormGroup className="col-md-3">
-            <FormLabel>Fecha limite:</FormLabel>
+
+          <Form.Group className="col-md-12 mb-3">
+            <Form.Label className="title">Descripción:</Form.Label>
+            <Form.Control
+              className="input-background"
+              as="textarea"
+              rows={3}
+              placeholder="Ingresa la descripción de la tarea"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="col-md-6 mb-3">
+            <Form.Label className="title">Fecha límite:</Form.Label>
             <Form.Control
               type="date"
-              placeholder="Fecha limite"
-              required
               className="input-background"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
             />
-          </FormGroup>
-          <FormGroup>
-            <FormLabel>Nota:</FormLabel>
+          </Form.Group>
+
+          <Form.Group className="col-md-6 mb-3">
+            <Form.Label className="title">Prioridad:</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Inserta una nota"
-              required
+              as="select"
               className="input-background"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+            >
+              <option value="">Selecciona una prioridad</option>
+              <option value="Baja">Baja</option>
+              <option value="Media">Media</option>
+              <option value="Alta">Alta</option>
+            </Form.Control>
+          </Form.Group>
+
+          <Form.Group className="col-md-12 mb-3">
+            <Form.Label className="title">Nota:</Form.Label>
+            <Form.Control
+              className="input-background"
+              as="textarea"
+              rows={3}
+              placeholder="Inserta una nota"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
             />
-          </FormGroup>
-          <Form.Group className="col-md-6 title">
+          </Form.Group>
+
+          <Form.Group className="col-md-4 mb-3">
+            <Form.Label className="title">Fecha de Finalización:</Form.Label>
+            <Form.Control
+              type="date"
+              className="input-background"
+              value={completionDate}
+              onChange={(e) => setCompletionDate(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="col-md-4 mb-3 d-flex align-items-center">
             <Form.Check
               type="checkbox"
               label="Tarea finalizada"
@@ -131,16 +195,15 @@ function TodoForm() {
               onChange={(e) => setCompleted(e.target.checked)}
             />
           </Form.Group>
-          <div className="col-md-6">
-            <Button
-              className="btn btn-primary"
-              onClick={() => {
-                addTask();
-              }}
-            >
+
+          <div className="col-12 text-end">
+            <Button className="btn btn-primary" onClick={addTask}>
               {isEditing ? "Guardar Cambios" : "Guardar Tarea"}
             </Button>
-            <Button className="btn btn-secondary" onClick={handleCloseModal}>
+            <Button
+              className="btn btn-secondary ms-2"
+              onClick={handleCloseModal}
+            >
               Cancelar
             </Button>
           </div>
