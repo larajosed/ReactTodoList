@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import { TodoFormContextProvider } from "../context/todoFormContext";
 import { TodoSidebarContextProvider } from "../context/todoSidebarContext";
 import TodoFormModalButton from "../components/TodoFormModalButton";
-import SidebarTask from "../components/SidebarTask";
+import TodoSidebar from "../components/TodoSidebar";
 import TodoItem from "../components/TodoItem";
 
 function TodoListView() {
@@ -23,7 +23,7 @@ function TodoListView() {
 
         <TodoSidebarContextProvider>
           <TodoList />
-          <SidebarTask />
+          <TodoSidebar />
         </TodoSidebarContextProvider>
       </div>
     </TodoFormContextProvider>

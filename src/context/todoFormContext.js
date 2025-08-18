@@ -8,6 +8,7 @@ export function TodoFormContextProvider(props) {
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [showInfo, setShowInfo] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
 
   const contextValue = {
     showModal,
@@ -20,6 +21,8 @@ export function TodoFormContextProvider(props) {
     setShowInfo,
     showSideBar,
     setShowSideBar,
+    selectedTask,
+    setSelectedTask,
   };
 
   return (
