@@ -2,6 +2,7 @@ import { Button, Modal, OverlayTrigger, Tooltip } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import todoService from "../services/todoService";
 import { TodoFormContext } from "../context/todoFormContext";
+import { TodoSidebarContext } from "../context/todoSidebarContext";
 import "../css/TodoItem.css";
 import { BsPencil } from "react-icons/bs";
 import { RiDeleteBin2Line } from "react-icons/ri";
@@ -9,8 +10,8 @@ import { IoEyeOutline } from "react-icons/io5";
 
 function TodoItem({ refresh, task }) {
   const [show, setShow] = useState(false);
-  const { setTaskToEdit, setShowModal, setShowSideBar, setSelectedTask } =
-    useContext(TodoFormContext);
+  const { setTaskToEdit, setShowModal } = useContext(TodoFormContext);
+  const { setShowSideBar, setSelectedTask } = useContext(TodoSidebarContext);
 
   const handleClose = () => {
     setShow(false);

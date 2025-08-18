@@ -2,8 +2,10 @@ import TodoList from "../components/TodoList";
 import TodoForm from "../components/TodoForm";
 import { Row, Col } from "react-bootstrap";
 import { TodoFormContextProvider } from "../context/todoFormContext";
+import { TodoSidebarContextProvider } from "../context/todoSidebarContext";
 import TodoFormModalButton from "../components/TodoFormModalButton";
 import SidebarTask from "../components/SidebarTask";
+import TodoItem from "../components/TodoItem";
 
 function TodoListView() {
   return (
@@ -18,8 +20,11 @@ function TodoListView() {
           </Col>
         </Row>
         <TodoForm />
-        <TodoList />
-        <SidebarTask />
+
+        <TodoSidebarContextProvider>
+          <TodoList />
+          <SidebarTask />
+        </TodoSidebarContextProvider>
       </div>
     </TodoFormContextProvider>
   );
