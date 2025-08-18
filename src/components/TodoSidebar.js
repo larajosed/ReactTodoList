@@ -126,7 +126,7 @@ function TodoSidebar() {
               {daysRemaining > 0 ? (
                 `Quedan ${daysRemaining} días para la Finalización`
               ) : (
-                <span style={{ color: "red" }}>
+                <span className="taskDelay">
                   La tarea esta retrasada por {Math.abs(daysRemaining)} días.
                 </span>
               )}

@@ -42,6 +42,11 @@
 
 .offcanvas-container.dark .offcanvas-body .descriptionBox {
   border: 1px #c9c9ca;
+  background-color: #2b3d59;
+}
+
+.taskDelay {
+  color: rgba(238, 38, 38, 0.801);
 }
 .textBox {
   margin-left: 3px;
