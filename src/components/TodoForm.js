@@ -26,6 +26,7 @@ function TodoForm() {
   const [dueDate, setDueDate] = useState("");
   const [completionDate, setCompletionDate] = useState("");
   const [assigned, setAssigned] = useState("");
+  const [status, setStatus] = useState("To Do");
 
   useEffect(() => {
     if (taskToEdit) {
@@ -39,6 +40,7 @@ function TodoForm() {
       setDueDate(taskToEdit.dueDate || "");
       setCompletionDate(taskToEdit.completionDate || "");
       setAssigned(taskToEdit.assigned || "");
+      setStatus(taskToEdit.status || "");
 
       setIsEditing(true);
     } else {
@@ -50,7 +52,7 @@ function TodoForm() {
   const addTask = () => {
     let taskData = {
       taskName: taskName,
-      completed: completed,
+      status: status,
       assigned: assigned,
       priority: priority,
       description: description,
@@ -186,14 +188,19 @@ function TodoForm() {
               onChange={(e) => setCompletionDate(e.target.value)}
             />
           </Form.Group>
-
-          <Form.Group className="col-md-4 mb-3 d-flex align-items-center">
-            <Form.Check
-              type="checkbox"
-              label="Tarea finalizada"
-              checked={completed}
-              onChange={(e) => setCompleted(e.target.checked)}
-            />
+          <Form.Group className="col-md-3 mb-3">
+            <Form.Label className="title">Estado:</Form.Label>
+            <Form.Control
+              as="select"
+              className="input-background"
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            >
+              <option value="">Selecciona un estado</option>
+              <option value="To Do">To Do</option>
+              <option value="Doing">Doing</option>
+              <option value="Done">Done</option>
+            </Form.Control>
           </Form.Group>
 
           <div className="col-12 text-end">

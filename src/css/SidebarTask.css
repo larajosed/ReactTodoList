@@ -19,3 +19,9 @@
   background-color: #1b2840;
   color: #bdbcbc;
 }
+
+.container-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

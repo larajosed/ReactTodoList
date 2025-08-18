@@ -1,16 +1,31 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { TodoSidebarContext } from "../context/todoSidebarContext";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { AppThemeContext } from "../context/appThemeContext";
 import "../css/SidebarTask.css";
-import { FaCheck } from "react-icons/fa6";
-import { ImBlocked } from "react-icons/im";
 import {
   BsArrowUpCircleFill,
   BsDashCircleFill,
   BsArrowDownCircleFill,
+  BsCalendarDate,
+  BsCalendar2Date,
+  BsCalendar2DateFill,
 } from "react-icons/bs";
-import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaTimesCircle,
+  FaRegListAlt,
+  FaRegClock,
+} from "react-icons/fa";
+import {
+  MdOutlineDescription,
+  MdOutlineAssignmentInd,
+  MdLowPriority,
+} from "react-icons/md";
+import { GrCompliance } from "react-icons/gr";
+import { LuNotebookPen } from "react-icons/lu";
+import moment from "moment";
 
 function TodoSidebar() {
   const { showSideBar, setShowSideBar, selectedTask } =
@@ -34,6 +49,35 @@ function TodoSidebar() {
     }
   };
 
+  const formattedDueDate = selectedTask.dueDate
+    ? moment(selectedTask.dueDate).format("DD/MM/YYYY")
+    : "No establecida";
+  const formattedCreationDate = selectedTask.creationDate
+    ? moment(selectedTask.creationDate).format("DD/MM/YYYY")
+    : "No establecida";
+  const formattedCompletionDate = selectedTask.completionDate
+    ? moment(selectedTask.completionDate).format("DD/MM/YYYY")
+    : "No establecida";
+
+  const statusTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Estado: {selectedTask.status || "No disponible"}
+    </Tooltip>
+  );
+
+  const getTaskStatusIcon = (status) => {
+    switch (status) {
+      case "To Do":
+        return <FaRegListAlt style={{ color: "gray" }} />;
+      case "Doing":
+        return <FaRegClock style={{ color: "#007bff" }} />;
+      case "Done":
+        return <FaCheckCircle style={{ color: "green" }} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       <Offcanvas
@@ -46,38 +90,54 @@ function TodoSidebar() {
           <Offcanvas.Title>Detalles de la Tarea</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className={theme}>
+          <h5>{selectedTask.taskName}</h5>
+
+          <div className="container-icons">
+            <OverlayTrigger
+              placement="bottom"
+              delay={{ show: 250, hide: 400 }}
+              overlay={statusTooltip}
+            >
+              <p>
+                <strong>Estado:</strong>{" "}
+                {getTaskStatusIcon(selectedTask.status)}
+              </p>
+            </OverlayTrigger>
+            <div>
+              {" "}
+              <MdOutlineAssignmentInd />
+              {selectedTask.assignedTo}
+            </div>
+            <div>
+              {" "}
+              <MdLowPriority /> {getPriorityIcon(selectedTask.priority)}
+            </div>
+          </div>
+
           <p>
-            <strong>Tarea:</strong> {selectedTask.taskName}
+            <strong>
+              <pre style={{ fontFamily: "system-ui" }}>
+                {selectedTask.description}
+              </pre>
+            </strong>
+          </p>
+
+          <p>
+            <BsCalendarDate />
+            <strong>Fecha Límite:</strong> {formattedDueDate}
           </p>
           <p>
-            <strong>Descripción:</strong> <pre>{selectedTask.description}</pre>
+            <LuNotebookPen />
+            <strong>Nota:</strong>
+            <pre style={{ fontFamily: "system-ui" }}> {selectedTask.note}</pre>
           </p>
           <p>
-            <strong>Asignado a:</strong> {selectedTask.assignedTo}
+            <BsCalendar2Date />
+            <strong>Fecha de Creación:</strong> {formattedCreationDate}
           </p>
           <p>
-            <strong>Prioridad:</strong> {getPriorityIcon(selectedTask.priority)}
-          </p>
-          <p>
-            <strong>Completada:</strong>
-            {selectedTask.completed ? (
-              <FaCheckCircle style={{ color: "green", marginLeft: "5px" }} />
-            ) : (
-              <FaTimesCircle style={{ color: "red", marginLeft: "5px" }} />
-            )}
-          </p>
-          <p>
-            <strong>Fecha Límite:</strong> {selectedTask.dueDate}
-          </p>
-          <p>
-            <strong>Nota:</strong> {selectedTask.note}
-          </p>
-          <p>
-            <strong>Fecha de Creación:</strong> {selectedTask.creationDate}
-          </p>
-          <p>
-            <strong>Fecha de Finalización:</strong>{" "}
-            {selectedTask.completionDate}
+            <BsCalendar2DateFill />
+            <strong>Fecha de Finalización:</strong> {formattedCompletionDate}
           </p>
         </Offcanvas.Body>
       </Offcanvas>

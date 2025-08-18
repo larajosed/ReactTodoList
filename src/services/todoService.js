@@ -62,38 +62,38 @@ const todoService = {
     const task1 = new Task(
       1,
       "Visitar larajosed.github.io",
-      false,
       "Todos",
       "Alta",
       "Visitar en casa",
       "Nada aun",
       new Date(),
       new Date(),
-      new Date()
+      new Date(),
+      "Doing"
     );
     const task2 = new Task(
       2,
       "Llamar a José Lara para entrevistarle",
-      false,
       "Recursos Humanos",
       "Alta",
       "Visitar en casa",
       "Nada aun",
       new Date(),
       new Date(),
-      new Date()
+      new Date(),
+      "Doing"
     );
     const task3 = new Task(
       3,
       "Buscar memes de gatitos",
-      true,
       "José",
       "Alta",
       "Visitar en casa",
       "Nada aun",
       new Date(),
       new Date(),
-      new Date()
+      new Date(),
+      "Doing"
     );
     const tasksArray = [task1, task2, task3];
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasksArray));
