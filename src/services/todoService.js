@@ -62,6 +62,7 @@ const todoService = {
     const task1 = new Task(
       1,
       "Visitar larajosed.github.io",
+      false,
       "Todos",
       "Alta",
       "Visitar en casa",
@@ -74,6 +75,7 @@ const todoService = {
     const task2 = new Task(
       2,
       "Llamar a José Lara para entrevistarle",
+      false,
       "Recursos Humanos",
       "Alta",
       "Visitar en casa",
@@ -86,6 +88,7 @@ const todoService = {
     const task3 = new Task(
       3,
       "Buscar memes de gatitos",
+      true,
       "José",
       "Alta",
       "Visitar en casa",

@@ -1,23 +1,30 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { AppThemeContext } from "./context/appThemeContext";
 import "./App.css";
 import TodoListView from "./views/TodoListView";
-import ThemeToggleButton from "./components/ThemeToggleButton";
 import TodoFooter from "./components/footer/TodoFooter";
+import TodoDashboard from "./components/TodoDashboard";
+import TodoNavbar from "./components/TodoNavbar";
 
 function App() {
   const { theme } = useContext(AppThemeContext);
 
   return (
-    <div className={`body ${theme}`}>
-      <div className={`app-container ${theme}`}>
-        <div className={`App ${theme}`}>
-          <ThemeToggleButton />
-          <TodoListView />
-          <TodoFooter />
+    <BrowserRouter>
+      <div className={`body ${theme}`}>
+        <TodoNavbar />
+        <div className={`app-container ${theme}`}>
+          <div className={`App ${theme}`}>
+            <Routes>
+              <Route path="/" element={<TodoListView />} />
+              <Route path="/dashboard" element={<TodoDashboard />} />
+            </Routes>
+          </div>
         </div>
+        <TodoFooter />
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 

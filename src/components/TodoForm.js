@@ -52,6 +52,7 @@ function TodoForm() {
   const addTask = () => {
     let taskData = {
       taskName: taskName,
+      completed: completed,
       status: status,
       assigned: assigned,
       priority: priority,
@@ -201,6 +202,14 @@ function TodoForm() {
               <option value="Doing">Doing</option>
               <option value="Done">Done</option>
             </Form.Control>
+          </Form.Group>
+          <Form.Group className="col-md-4 mb-3 d-flex align-items-center">
+            <Form.Check
+              type="checkbox"
+              label="Tarea finalizada"
+              checked={completed}
+              onChange={(e) => setCompleted(e.target.checked)}
+            />
           </Form.Group>
 
           <div className="col-12 text-end">
