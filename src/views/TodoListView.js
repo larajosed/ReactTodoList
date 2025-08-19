@@ -10,7 +10,6 @@ import TodoItem from "../components/TodoItem";
 function TodoListView() {
   return (
     <TodoFormContextProvider>
-      <h1 className="title">Lista de Tareas</h1>
       <div className="my-5">
         <Row className="mb-3">
           <Col className="add-task-button-container">
