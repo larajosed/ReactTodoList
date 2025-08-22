@@ -1,0 +1,9 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.todo-footer {
+  margin-top: auto;
+}
