@@ -43,7 +43,7 @@ function TodoDashboard() {
         <TodoDashboardSimple tasks={tasks} />
       ) : activeView === "productivity" ? (
         <TodoDashboardProductivity tasks={tasks} />
-      ) : activeView === "status" ? ( // 👈 Nueva condición
+      ) : activeView === "status" ? (
         <TodoDashboardStatus tasks={tasks} />
       ) : null}
     </div>

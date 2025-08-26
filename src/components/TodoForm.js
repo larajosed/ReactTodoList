@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Form, Button, Modal, FormGroup, FormLabel } from "react-bootstrap";
+import { useContext, useState, useEffect } from "react";
+import { Form, Button, Modal } from "react-bootstrap";
 import { TodoFormContext } from "../context/todoFormContext";
 import todoService from "../services/todoService";
 import "../css/TodoForm.css";
