@@ -8,9 +8,6 @@ import {
   BsArrowUpCircleFill,
   BsDashCircleFill,
   BsArrowDownCircleFill,
-  BsCalendarDate,
-  BsCalendar2Date,
-  BsCalendar2DateFill,
 } from "react-icons/bs";
 import { FaCheckCircle, FaRegListAlt, FaRegClock } from "react-icons/fa";
 import { MdOutlineAssignmentInd, MdLowPriority } from "react-icons/md";

@@ -36,7 +36,20 @@ const todoService = {
       if (taskData.id) {
         const index = mockTasks.findIndex((task) => task.id === taskData.id);
         if (index !== -1) {
+          const isTaskNowCompleted =
+            taskData.completed && !mockTasks[index].completed;
+
+          const isTaskNowIncomplete =
+            !taskData.completed && mockTasks[index].completed;
+
           mockTasks[index] = { ...mockTasks[index], ...taskData };
+
+          if (isTaskNowCompleted) {
+            mockTasks[index].completionDate = new Date().toISOString();
+          } else if (isTaskNowIncomplete) {
+            delete mockTasks[index].completionDate;
+          }
+
           saveTasksToLocalStorage(mockTasks);
           resolve(mockTasks[index]);
         } else {
@@ -51,6 +64,8 @@ const todoService = {
         const newTask = {
           id: newId,
           ...taskData,
+          completed: false,
+          completionDate: null,
         };
         mockTasks.push(newTask);
         saveTasksToLocalStorage(mockTasks);
@@ -69,7 +84,7 @@ const todoService = {
       "Nada aun",
       new Date(),
       new Date(),
-      new Date(),
+      null,
       "Doing"
     );
     const task2 = new Task(
@@ -82,7 +97,7 @@ const todoService = {
       "Nada aun",
       new Date(),
       new Date(),
-      new Date(),
+      null,
       "Doing"
     );
     const task3 = new Task(
@@ -98,6 +113,9 @@ const todoService = {
       new Date(),
       "Doing"
     );
+
+    task3.completionDate = new Date().toISOString();
+
     const tasksArray = [task1, task2, task3];
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasksArray));
     mockTasks = loadTasksFromLocalStorage();

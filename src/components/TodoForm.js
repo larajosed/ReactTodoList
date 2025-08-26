@@ -59,7 +59,7 @@ function TodoForm() {
       description: description,
       note: note,
       dueDate: dueDate,
-      completionDate: completionDate,
+      completionDate: completed ? new Date().toISOString() : null,
     };
 
     if (!isEditing) {
