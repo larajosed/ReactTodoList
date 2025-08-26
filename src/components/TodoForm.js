@@ -25,13 +25,12 @@ function TodoForm() {
   const [creationDate, setCreationDate] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [completionDate, setCompletionDate] = useState("");
-  const [assigned, setAssigned] = useState("");
   const [status, setStatus] = useState("To Do");
 
   useEffect(() => {
     if (taskToEdit) {
       setTaskName(taskToEdit.taskName || "");
-      setAssignedTo(taskToEdit.assigned || "");
+      setAssignedTo(taskToEdit.assignedTo || "");
       setCompleted(taskToEdit.completed || false);
       setPriority(taskToEdit.priority || "");
       setDescription(taskToEdit.description || "");
@@ -39,7 +38,6 @@ function TodoForm() {
       setCreationDate(taskToEdit.creationDate || "");
       setDueDate(taskToEdit.dueDate || "");
       setCompletionDate(taskToEdit.completionDate || "");
-      setAssigned(taskToEdit.assigned || "");
       setStatus(taskToEdit.status || "");
 
       setIsEditing(true);
@@ -54,7 +52,7 @@ function TodoForm() {
       taskName: taskName,
       completed: completed,
       status: status,
-      assigned: assigned,
+      assignedTo: assignedTo,
       priority: priority,
       description: description,
       note: note,
@@ -79,7 +77,7 @@ function TodoForm() {
 
   const resetTaskFields = () => {
     setTaskName("");
-    setAssigned("");
+    setAssignedTo("");
     setCompleted(false);
     setPriority("");
     setDescription("");
@@ -126,8 +124,8 @@ function TodoForm() {
               type="text"
               placeholder="Persona asignada"
               required
-              value={assigned}
-              onChange={(e) => setAssigned(e.target.value)}
+              value={assignedTo}
+              onChange={(e) => setAssignedTo(e.target.value)}
             />
           </Form.Group>
 

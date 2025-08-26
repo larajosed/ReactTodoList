@@ -39,13 +39,22 @@ function TodoDashboard() {
           <Nav.Link eventKey="status">Estados de Tareas</Nav.Link>
         </Nav.Item>
       </Nav>
-      {activeView === "simple" ? (
-        <TodoDashboardSimple tasks={tasks} />
-      ) : activeView === "productivity" ? (
-        <TodoDashboardProductivity tasks={tasks} />
-      ) : activeView === "status" ? (
-        <TodoDashboardStatus tasks={tasks} />
-      ) : null}
+      <div className="dashboardContent">
+        {activeView === "simple" ? (
+          <TodoDashboardSimple tasks={tasks} />
+        ) : activeView === "productivity" ? (
+          <TodoDashboardProductivity tasks={tasks} />
+        ) : activeView === "status" ? (
+          <TodoDashboardStatus tasks={tasks} />
+        ) : (
+          <div className="welcomeMessage">
+            <p>
+              ¡Selecciona una pestaña para visualizar las gráficas de tu
+              progreso!
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
