@@ -23,14 +23,13 @@ function TodoDashboard() {
 
   return (
     <div className="dashboardContainer">
-      <h3>Resumen del Dashboard</h3>
       <Nav
         variant="tabs"
         activeKey={activeView}
         onSelect={(selectedKey) => setActiveView(selectedKey)}
       >
         <Nav.Item>
-          <Nav.Link eventKey="simple">Progreso</Nav.Link>
+          <Nav.Link eventKey="simple">Progreso General</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="productivity">Productividad Semanal</Nav.Link>

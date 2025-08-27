@@ -39,12 +39,6 @@ function TodoSidebar() {
   const formattedDueDate = selectedTask.dueDate
     ? moment(selectedTask.dueDate).format("DD/MM/YYYY")
     : "No establecida";
-  const formattedCreationDate = selectedTask.creationDate
-    ? moment(selectedTask.creationDate).format("DD/MM/YYYY")
-    : "No establecida";
-  const formattedCompletionDate = selectedTask.completionDate
-    ? moment(selectedTask.completionDate).format("DD/MM/YYYY")
-    : "No establecida";
 
   const dueDate = selectedTask.dueDate ? moment(selectedTask.dueDate) : null;
   const creationDate = selectedTask.creationDate

@@ -21,3 +21,25 @@
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.nav-tabs .nav-link.active {
+  background-color: #34495e !important;
+  color: white !important;
+  border-color: #34495e !important;
+}
+
+.nav-tabs .nav-link {
+  color: #727272 !important;
+  border-color: #34495e !important;
+}
+.nav-tabs .nav-link:hover {
+  border-color: #34495e !important;
+}
+
+.nav-tabs {
+  border-bottom: none !important;
+}
+
+.welcomeMessage {
+  margin-top: 45px;
+}
