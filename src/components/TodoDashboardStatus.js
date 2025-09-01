@@ -34,7 +34,6 @@ function TodoDashboardStatus({ tasks }) {
         alignItems: "center",
       }}
     >
-      {/* 👈 Segundo gráfico: por status */}
       <div style={{ width: "100%", height: 300, marginTop: "20px" }}>
         <h4>Tareas por estado</h4>
         <ResponsiveContainer>

@@ -25,7 +25,7 @@ function TodoDashboardProductivity({ tasks }) {
     }
 
     tasks.forEach((task) => {
-      // Asegúrate de que la tarea esté completada y tenga una fecha de finalización
+      // Asegúra de que la tarea esté completada y tenga una fecha de finalización
       if (task.completed && task.completionDate) {
         const completedDate = new Date(task.completionDate);
 

@@ -8,7 +8,7 @@ import "../css/TodoDashboard.css";
 
 function TodoDashboard() {
   const [tasks, setTasks] = useState([]);
-  const [activeView, setActiveView] = useState(null);
+  const [activeView, setActiveView] = useState("simple");
 
   useEffect(() => {
     todoService
@@ -45,14 +45,7 @@ function TodoDashboard() {
           <TodoDashboardProductivity tasks={tasks} />
         ) : activeView === "status" ? (
           <TodoDashboardStatus tasks={tasks} />
-        ) : (
-          <div className="welcomeMessage">
-            <p>
-              ¡Selecciona una pestaña para visualizar las gráficas de tu
-              progreso!
-            </p>
-          </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
