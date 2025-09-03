@@ -16,8 +16,10 @@ function TodoList() {
         if (searchTerm) {
           data = data.filter(
             (task) =>
-              (task.text &&
-                task.text.toLowerCase().includes(searchTerm.toLowerCase())) ||
+              (task.taskName &&
+                task.taskName
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase())) ||
               (task.assignedTo &&
                 task.assignedTo
                   .toLowerCase()

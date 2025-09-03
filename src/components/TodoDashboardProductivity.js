@@ -52,7 +52,7 @@ function TodoDashboardProductivity({ tasks }) {
 
   return (
     <div style={{ width: "100%", height: 300 }}>
-      <h3>Productividad Semanal</h3>
+      <h3 className="tittle">Productividad Semanal</h3>
       <ResponsiveContainer style={{ marginTop: "35px" }}>
         <BarChart data={data}>
           <XAxis dataKey="name" />

@@ -49,6 +49,8 @@ function TodoSidebar() {
       ? dueDate.diff(creationDate, "days")
       : "No disponible";
 
+  const daysDifference = moment(selectedTask.dueDate).diff(moment(), "days");
+
   const statusTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       Estado: {selectedTask.status || "No disponible"}
@@ -105,7 +107,7 @@ function TodoSidebar() {
               delay={{ show: 250, hide: 400 }}
               overlay={statusTooltip}
             >
-              {getTaskStatusIcon(selectedTask.status)}
+              <span>{getTaskStatusIcon(selectedTask.status)}</span>
             </OverlayTrigger>
           </h5>
           <OverlayTrigger
@@ -114,12 +116,14 @@ function TodoSidebar() {
             overlay={dueDateTooltip}
           >
             <p className="textDayLimit">
-              {daysRemaining > 0 ? (
-                `Quedan ${daysRemaining} días para la Finalización`
-              ) : (
+              {daysDifference > 0 ? (
+                `Quedan ${daysDifference} días para la Finalización`
+              ) : daysDifference < 0 ? (
                 <span className="taskDelay">
-                  La tarea esta retrasada por {Math.abs(daysRemaining)} días.
+                  La tarea esta retrasada por {Math.abs(daysDifference)} días.
                 </span>
+              ) : (
+                `La fecha límite es hoy.`
               )}
             </p>
           </OverlayTrigger>
@@ -130,7 +134,6 @@ function TodoSidebar() {
               overlay={assignedTooltip}
             >
               <div className="icons">
-                {" "}
                 <MdOutlineAssignmentInd />
                 {selectedTask.assignedTo}
               </div>
@@ -140,10 +143,7 @@ function TodoSidebar() {
               delay={{ show: 250, hide: 400 }}
               overlay={priorityTooltip}
             >
-              <div>
-                {" "}
-                <MdLowPriority /> {getPriorityIcon(selectedTask.priority)}
-              </div>
+              <span>Prioridad {getPriorityIcon(selectedTask.priority)}</span>
             </OverlayTrigger>
           </div>
 
