@@ -82,8 +82,8 @@ const todoService = {
       "Alta",
       "Visitar en casa",
       "Nada aun",
-      new Date(),
-      new Date(),
+      new Date("2025-09-01T10:00:00Z"),
+      new Date("2025-09-01T10:00:00Z"),
       null,
       "Doing"
     );
@@ -93,10 +93,10 @@ const todoService = {
       false,
       "Recursos Humanos",
       "Alta",
-      "Visitar en casa",
-      "Nada aun",
-      new Date(),
-      new Date(),
+      "Oficina Principal",
+      "Preparar preguntas clave para la entrevista",
+      new Date("2025-09-02T14:30:00Z"),
+      new Date("2025-09-02T14:30:00Z"),
       null,
       "Doing"
     );
@@ -105,18 +105,120 @@ const todoService = {
       "Buscar memes de gatitos",
       true,
       "José",
+      "Baja",
+      "Cualquier lugar",
+      "Coleccionar los 10 mejores memes de gatos para el chat del equipo",
+      new Date("2025-08-30T09:00:00Z"),
+      new Date("2025-08-30T10:15:00Z"),
+      new Date("2025-08-30T10:15:00Z"),
+      "Done"
+    );
+    const task4 = new Task(
+      4,
+      "Configurar el entorno de desarrollo para el proyecto 'Agile Board'",
+      false,
+      "Equipo de Desarrollo",
+      "Baja",
+      "Oficina Principal",
+      "Instalar Node.js, npm, y clonar el repositorio del proyecto",
+      new Date("2025-09-03T09:30:00Z"),
+      new Date("2025-09-03T09:30:00Z"),
+      null,
+      "To Do"
+    );
+    const task5 = new Task(
+      5,
+      "Revisar el informe de métricas del trimestre",
+      false,
+      "Dirección",
+      "Media",
+      "Sala de Reuniones B",
+      "Analizar el crecimiento interanual y los KPIs principales",
+      new Date("2025-09-04T11:00:00Z"),
+      new Date("2025-09-04T11:00:00Z"),
+      null,
+      "To Do"
+    );
+    const task6 = new Task(
+      6,
+      "Escribir la documentación técnica del API",
+      false,
+      "José",
       "Alta",
-      "Visitar en casa",
-      "Nada aun",
-      new Date(),
-      new Date(),
-      new Date(),
+      "Oficina Principal",
+      "Detallar los endpoints, parámetros, y respuestas del API RESTful",
+      new Date("2025-09-05T15:00:00Z"),
+      new Date("2025-09-05T15:00:00Z"),
+      null,
       "Doing"
+    );
+    const task7 = new Task(
+      7,
+      "Planificar la fiesta de fin de año",
+      false,
+      "Comité de Eventos",
+      "Baja",
+      "Evento Externo",
+      "Contactar proveedores de catering y salones de eventos",
+      new Date("2025-09-01T11:30:00Z"),
+      new Date("2025-09-01T11:30:00Z"),
+      null,
+      "Pending"
+    );
+    const task8 = new Task(
+      8,
+      "Crear un nuevo logo para la empresa",
+      false,
+      "Diseño",
+      "Baja",
+      "Estudio de Diseño",
+      "Generar 3 propuestas de diseño basadas en la nueva identidad de marca",
+      new Date("2025-09-06T10:00:00Z"),
+      new Date("2025-09-06T10:00:00Z"),
+      null,
+      "Doing"
+    );
+    const task9 = new Task(
+      9,
+      "Actualizar la página web con las nuevas promociones",
+      true,
+      "Marketing",
+      "Media",
+      "Remoto",
+      "Subir los banners y textos publicitarios para la campaña de otoño",
+      new Date("2025-08-28T09:00:00Z"),
+      new Date("2025-08-28T14:00:00Z"),
+      new Date("2025-08-28T14:00:00Z"),
+      "Done"
+    );
+    const task10 = new Task(
+      10,
+      "Realizar la auditoría de seguridad del servidor",
+      false,
+      "IT",
+      "Alta",
+      "Sala de Servidores",
+      "Verificar las vulnerabilidades y aplicar los parches de seguridad más recientes",
+      new Date("2025-09-07T09:00:00Z"),
+      new Date("2025-09-07T09:00:00Z"),
+      null,
+      "Pending"
     );
 
     task3.completionDate = new Date().toISOString();
 
-    const tasksArray = [task1, task2, task3];
+    const tasksArray = [
+      task1,
+      task2,
+      task3,
+      task4,
+      task5,
+      task6,
+      task7,
+      task8,
+      task9,
+      task10,
+    ];
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasksArray));
     mockTasks = loadTasksFromLocalStorage();
   },
