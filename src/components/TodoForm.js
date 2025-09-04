@@ -17,7 +17,6 @@ function TodoForm() {
   const { theme } = useContext(AppThemeContext);
   const [taskName, setTaskName] = useState("");
   const [assignedTo, setAssignedTo] = useState("");
-  const [completed, setCompleted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [priority, setPriority] = useState("");
   const [description, setDescription] = useState("");
@@ -31,15 +30,25 @@ function TodoForm() {
     if (taskToEdit) {
       setTaskName(taskToEdit.taskName || "");
       setAssignedTo(taskToEdit.assignedTo || "");
-      setCompleted(taskToEdit.completed || false);
       setPriority(taskToEdit.priority || "");
       setDescription(taskToEdit.description || "");
       setNote(taskToEdit.note || "");
-      setCreationDate(taskToEdit.creationDate || "");
-      setDueDate(taskToEdit.dueDate || "");
-      setCompletionDate(taskToEdit.completionDate || "");
-      setStatus(taskToEdit.status || "");
-
+      setCreationDate(
+        taskToEdit.creationDate
+          ? new Date(taskToEdit.creationDate).toISOString().slice(0, 10)
+          : ""
+      );
+      setDueDate(
+        taskToEdit.dueDate
+          ? new Date(taskToEdit.dueDate).toISOString().slice(0, 10)
+          : ""
+      );
+      setCompletionDate(
+        taskToEdit.completionDate
+          ? new Date(taskToEdit.completionDate).toISOString().slice(0, 10)
+          : ""
+      );
+      setStatus(taskToEdit.status || "To Do");
       setIsEditing(true);
     } else {
       resetTaskFields();
@@ -48,20 +57,21 @@ function TodoForm() {
   }, [taskToEdit]);
 
   const addTask = () => {
+    const isCompleted = status === "Done";
     let taskData = {
       taskName: taskName,
-      completed: completed,
+      completed: isCompleted,
       status: status,
       assignedTo: assignedTo,
       priority: priority,
       description: description,
       note: note,
       dueDate: dueDate,
-      completionDate: completed ? new Date().toISOString() : null,
+      completionDate: isCompleted ? new Date().toISOString() : null,
     };
 
     if (!isEditing) {
-      taskData.creationDate = new Date().toISOString().slice(0, 10);
+      taskData.creationDate = new Date().toISOString();
     }
     if (isEditing && taskToEdit.id) {
       taskData = { ...taskData, id: taskToEdit.id };
@@ -78,13 +88,13 @@ function TodoForm() {
   const resetTaskFields = () => {
     setTaskName("");
     setAssignedTo("");
-    setCompleted(false);
     setPriority("");
     setDescription("");
     setNote("");
     setCreationDate("");
     setDueDate("");
     setCompletionDate("");
+    setStatus("To Do");
   };
 
   const handleCloseModal = () => {
@@ -177,16 +187,31 @@ function TodoForm() {
               onChange={(e) => setNote(e.target.value)}
             />
           </Form.Group>
+          {isEditing && (
+            <>
+              <Form.Group className="col-md-4 mb-3">
+                <Form.Label className="title">Fecha de Creación:</Form.Label>
+                <Form.Control
+                  type="date"
+                  className="input-background"
+                  value={creationDate}
+                  readOnly
+                />
+              </Form.Group>
+              <Form.Group className="col-md-4 mb-3">
+                <Form.Label className="title">
+                  Fecha de Finalización:
+                </Form.Label>
+                <Form.Control
+                  type="date"
+                  className="input-background"
+                  value={completionDate}
+                  readOnly
+                />
+              </Form.Group>
+            </>
+          )}
 
-          <Form.Group className="col-md-4 mb-3">
-            <Form.Label className="title">Fecha de Finalización:</Form.Label>
-            <Form.Control
-              type="date"
-              className="input-background"
-              value={completionDate}
-              onChange={(e) => setCompletionDate(e.target.value)}
-            />
-          </Form.Group>
           <Form.Group className="col-md-3 mb-3">
             <Form.Label className="title">Estado:</Form.Label>
             <Form.Control
@@ -200,14 +225,6 @@ function TodoForm() {
               <option value="Doing">Doing</option>
               <option value="Done">Done</option>
             </Form.Control>
-          </Form.Group>
-          <Form.Group className="col-md-4 mb-3 d-flex align-items-center">
-            <Form.Check
-              type="checkbox"
-              label="Tarea finalizada"
-              checked={completed}
-              onChange={(e) => setCompleted(e.target.checked)}
-            />
           </Form.Group>
 
           <div className="col-12 text-end">
