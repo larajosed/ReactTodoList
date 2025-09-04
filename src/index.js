@@ -9,9 +9,14 @@ import todoService from "./services/todoService";
 import { ThemeContextProvider } from "./context/appThemeContext";
 
 const LOCAL_STORAGE_KEY = "myTodoAppTasks";
-const initTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
-if (!initTasks) {
+const MODEL_VERSION_KEY = "myTodoAppVersion";
+const CURRENT_MODEL_VERSION = 1;
+const installedVersion = localStorage.getItem(MODEL_VERSION_KEY);
+const existingData = localStorage.getItem(LOCAL_STORAGE_KEY) !== null;
+
+if (!existingData || installedVersion !== CURRENT_MODEL_VERSION.toString()) {
   todoService.initMockTasks();
+  localStorage.setItem(MODEL_VERSION_KEY, CURRENT_MODEL_VERSION);
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

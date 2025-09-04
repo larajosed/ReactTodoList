@@ -38,7 +38,6 @@ const todoService = {
         if (index !== -1) {
           const isTaskNowCompleted =
             taskData.completed && !mockTasks[index].completed;
-
           const isTaskNowIncomplete =
             !taskData.completed && mockTasks[index].completed;
 
@@ -80,8 +79,8 @@ const todoService = {
       false,
       "Todos",
       "Alta",
-      "Visitar en casa",
-      "Nada aun",
+      "Explorar en detalle el portafolio online de José Lara, analizar la estructura del sitio, la calidad de su código, y la presentación de sus proyectos. Prestar especial atención a la sección de 'Proyectos' y a las tecnologías que utiliza.",
+      null,
       new Date("2025-09-01T10:00:00Z"),
       new Date("2025-09-01T10:00:00Z"),
       null,
@@ -93,9 +92,9 @@ const todoService = {
       false,
       "Recursos Humanos",
       "Alta",
-      "Oficina Principal",
+      "Programar y llevar a cabo una entrevista telefónica con José Lara. El objetivo es evaluar sus habilidades técnicas, experiencia previa y adecuación cultural para el puesto de desarrollador. Es crucial documentar todas las respuestas clave.",
       "Preparar preguntas clave para la entrevista",
-      new Date("2025-09-02T14:30:00Z"),
+      new Date("2025-09-01T14:30:00Z"),
       new Date("2025-09-02T14:30:00Z"),
       null,
       "Doing"
@@ -106,11 +105,11 @@ const todoService = {
       true,
       "José",
       "Baja",
-      "Cualquier lugar",
+      "Invertir un tiempo en la búsqueda de memes de gatitos humorísticos y de alta calidad en diversas plataformas como Reddit, Twitter, y sitios especializados. El objetivo es seleccionar los 10 mejores para animar el chat del equipo y fortalecer el compañerismo.",
       "Coleccionar los 10 mejores memes de gatos para el chat del equipo",
-      new Date("2025-08-30T09:00:00Z"),
-      new Date("2025-08-30T10:15:00Z"),
-      new Date("2025-08-30T10:15:00Z"),
+      new Date("2025-09-01T09:00:00Z"),
+      new Date("2025-09-02T10:15:00Z"),
+      new Date("2025-09-02T10:15:00Z"),
       "Done"
     );
     const task4 = new Task(
@@ -119,7 +118,7 @@ const todoService = {
       false,
       "Equipo de Desarrollo",
       "Baja",
-      "Oficina Principal",
+      "Asegurar que el entorno de desarrollo esté completamente configurado y listo para empezar a trabajar en el proyecto 'Agile Board'. Esto incluye la instalación de las últimas versiones de Node.js y npm, y la clonación del repositorio principal del proyecto desde GitHub. También se deben instalar todas las dependencias necesarias con `npm install`.",
       "Instalar Node.js, npm, y clonar el repositorio del proyecto",
       new Date("2025-09-03T09:30:00Z"),
       new Date("2025-09-03T09:30:00Z"),
@@ -129,15 +128,15 @@ const todoService = {
     const task5 = new Task(
       5,
       "Revisar el informe de métricas del trimestre",
-      false,
+      true,
       "Dirección",
       "Media",
-      "Sala de Reuniones B",
+      "Analizar en profundidad el informe de métricas del último trimestre. Se deben examinar los KPIs principales como el crecimiento interanual, la tasa de retención de clientes y la rentabilidad por producto. El análisis debe incluir la identificación de áreas de mejora y la preparación de un resumen ejecutivo para la próxima reunión de dirección.",
       "Analizar el crecimiento interanual y los KPIs principales",
+      new Date("2025-09-02T11:00:00Z"),
       new Date("2025-09-04T11:00:00Z"),
       new Date("2025-09-04T11:00:00Z"),
-      null,
-      "To Do"
+      "Done"
     );
     const task6 = new Task(
       6,
@@ -145,9 +144,9 @@ const todoService = {
       false,
       "José",
       "Alta",
-      "Oficina Principal",
+      "Redactar una documentación técnica completa y clara para el API RESTful. Esto implica describir cada endpoint, los parámetros de entrada requeridos, los posibles códigos de respuesta HTTP y ejemplos de payloads de solicitud y respuesta. La documentación debe ser lo suficientemente detallada para que otros desarrolladores puedan integrar la API sin problemas.",
       "Detallar los endpoints, parámetros, y respuestas del API RESTful",
-      new Date("2025-09-05T15:00:00Z"),
+      new Date("2025-09-03T15:00:00Z"),
       new Date("2025-09-05T15:00:00Z"),
       null,
       "Doing"
@@ -158,38 +157,38 @@ const todoService = {
       false,
       "Comité de Eventos",
       "Baja",
-      "Evento Externo",
+      "Comenzar la fase inicial de planificación para la fiesta de fin de año de la empresa. Las actividades incluyen investigar y contactar a varios proveedores de catering, explorar diferentes salones de eventos que se adapten al número de asistentes y recopilar ideas de actividades para el evento.",
       "Contactar proveedores de catering y salones de eventos",
-      new Date("2025-09-01T11:30:00Z"),
-      new Date("2025-09-01T11:30:00Z"),
+      new Date("2025-09-04T11:30:00Z"),
+      new Date("2025-09-05T11:30:00Z"),
       null,
-      "Pending"
+      "To Do"
     );
     const task8 = new Task(
       8,
       "Crear un nuevo logo para la empresa",
-      false,
+      true,
       "Diseño",
       "Baja",
-      "Estudio de Diseño",
+      "Diseñar un nuevo logo que capture la esencia de la marca. Esta tarea implica investigar las tendencias actuales de diseño, crear al menos tres propuestas de diseño con diferentes paletas de colores y tipografías, y preparar los archivos finales en varios formatos (vectorial, PNG, JPG).",
       "Generar 3 propuestas de diseño basadas en la nueva identidad de marca",
-      new Date("2025-09-06T10:00:00Z"),
-      new Date("2025-09-06T10:00:00Z"),
-      null,
-      "Doing"
+      new Date("2025-09-04T10:00:00Z"),
+      new Date("2025-09-04T14:00:00Z"),
+      new Date("2025-09-04T14:00:00Z"),
+      "Done"
     );
     const task9 = new Task(
       9,
       "Actualizar la página web con las nuevas promociones",
-      true,
+      false,
       "Marketing",
       "Media",
-      "Remoto",
+      "Implementar la nueva campaña promocional de otoño en la página web principal. Esto incluye la creación y subida de banners publicitarios optimizados para web, la redacción y publicación de textos persuasivos en la sección de ofertas y la verificación de que todos los enlaces y botones de llamada a la acción funcionen correctamente.",
       "Subir los banners y textos publicitarios para la campaña de otoño",
-      new Date("2025-08-28T09:00:00Z"),
-      new Date("2025-08-28T14:00:00Z"),
-      new Date("2025-08-28T14:00:00Z"),
-      "Done"
+      new Date("2025-09-05T09:00:00Z"),
+      new Date("2025-09-05T14:00:00Z"),
+      null,
+      "Doing"
     );
     const task10 = new Task(
       10,
@@ -197,15 +196,13 @@ const todoService = {
       false,
       "IT",
       "Alta",
-      "Sala de Servidores",
+      "Llevar a cabo una auditoría de seguridad completa en los servidores de la empresa. La tarea implica ejecutar un escaneo de vulnerabilidades, analizar los logs de acceso en busca de actividades sospechosas, y aplicar los parches de seguridad más recientes para mitigar cualquier riesgo identificado. Es crucial generar un informe detallado con los hallazgos y las acciones correctivas.",
       "Verificar las vulnerabilidades y aplicar los parches de seguridad más recientes",
-      new Date("2025-09-07T09:00:00Z"),
-      new Date("2025-09-07T09:00:00Z"),
+      new Date("2025-09-05T15:00:00Z"),
+      new Date("2025-09-05T17:00:00Z"),
       null,
-      "Pending"
+      "To Do"
     );
-
-    task3.completionDate = new Date().toISOString();
 
     const tasksArray = [
       task1,
@@ -219,6 +216,7 @@ const todoService = {
       task9,
       task10,
     ];
+
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasksArray));
     mockTasks = loadTasksFromLocalStorage();
   },
