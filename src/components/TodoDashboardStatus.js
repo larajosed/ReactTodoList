@@ -19,7 +19,7 @@ function TodoDashboardStatus({ tasks }) {
   }, {});
 
   const statusData = [
-    { name: "To Do", count: statusCounts["To Do"] || 0, color: "#92a8d1" },
+    { name: "To Do", count: statusCounts["To Do"] || 0, color: "#3965d5" },
     { name: "Doing", count: statusCounts["Doing"] || 0, color: "#f7d242" },
     { name: "Done", count: statusCounts["Done"] || 0, color: "#4f923b" },
   ];

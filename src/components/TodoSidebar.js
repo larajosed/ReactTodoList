@@ -143,16 +143,18 @@ function TodoSidebar() {
               delay={{ show: 250, hide: 400 }}
               overlay={priorityTooltip}
             >
-              <span>Prioridad {getPriorityIcon(selectedTask.priority)}</span>
+              <span>Prioridad: {getPriorityIcon(selectedTask.priority)}</span>
             </OverlayTrigger>
           </div>
-
-          <div className="descriptionBox">
-            <pre className="textBox">
-              {selectedTask.description || "Esta tarea no tiene descripción."}
-            </pre>
+          <div className="descriptionContainer">
+            <strong>Descripción: </strong>
+            <div className="descriptionBox">
+              <pre className="textBox">
+                {selectedTask.description || "Esta tarea no tiene descripción."}
+              </pre>
+            </div>
           </div>
-          <div>
+          <div className="noteContainer">
             <LuNotebookPen />
             <strong>Nota:</strong>
             <pre style={{ fontFamily: "system-ui" }}>

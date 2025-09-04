@@ -1,4 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import "../css/TodoDashboardSimple.css";
 
 function TodoDashboardSimple({ tasks }) {
   const completedCount = tasks.filter((task) => task.completed).length;
@@ -93,53 +94,51 @@ function TodoDashboardSimple({ tasks }) {
         alignItems: "center",
       }}
     >
-      <h3>Tu progreso general</h3>
-      <div style={{ width: "100%", height: 300 }}>
-        <ResponsiveContainer>
-          <PieChart>
-            <Pie
-              data={data}
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="50%"
-              innerRadius={60}
-              outerRadius={80}
-              fill="#8884d8"
-              label
-            >
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
-        <p style={{ textAlign: "center" }}>
-          {`Tienes ${completedCount} ${completedTextTarea} ${completedText} de ${tasks.length} ${taskText} en total.`}
+      <h3 className="tittle">Tu progreso general</h3>
+      <ResponsiveContainer>
+        <PieChart>
+          <Pie
+            data={data}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            innerRadius={60}
+            outerRadius={80}
+            fill="#8884d8"
+            label
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+      <p style={{ textAlign: "center" }}>
+        {`Tienes ${completedCount} ${completedTextTarea} ${completedText} de ${tasks.length} ${taskText} en total.`}
+      </p>
+      {completedTasksWithDates.length > 0 ? (
+        <p style={{ textAlign: "center", fontStyle: "italic" }}>
+          {`El tiempo promedio para completar una tarea es de ${formattedAverageTime} días.`}
         </p>
-        {completedTasksWithDates.length > 0 ? (
-          <p style={{ textAlign: "center", fontStyle: "italic" }}>
-            {`El tiempo promedio para completar una tarea es de ${formattedAverageTime} días.`}
-          </p>
-        ) : (
-          <p style={{ textAlign: "center", fontStyle: "italic" }}>
-            Aún no hay tareas completadas para calcular el promedio.
-          </p>
-        )}
+      ) : (
+        <p style={{ textAlign: "center", fontStyle: "italic" }}>
+          Aún no hay tareas completadas para calcular el promedio.
+        </p>
+      )}
 
-        <p
-          style={{
-            textAlign: "center",
-            fontStyle: "italic",
-            color: getTextColor(),
-          }}
-        >
-          {getDueMarginMessage()}
-        </p>
-      </div>
+      <p
+        style={{
+          textAlign: "center",
+          fontStyle: "italic",
+          color: getTextColor(),
+        }}
+      >
+        {getDueMarginMessage()}
+      </p>
     </div>
   );
 }
