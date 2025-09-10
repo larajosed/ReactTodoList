@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, Form } from "react-bootstrap";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { AppThemeContext } from "../context/appThemeContext";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 function TodoNavbar() {
   const { theme, toggleTheme } = useContext(AppThemeContext);

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router";
 import { useContext } from "react";
 import { AppThemeContext } from "./context/appThemeContext";
 import "./App.css";
@@ -11,7 +11,7 @@ function App() {
   const { theme } = useContext(AppThemeContext);
   const isDarkMode = theme === "dark";
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className={`body ${theme}`}>
         <TodoNavbar />
         <div className={`app-container ${theme}`}>
