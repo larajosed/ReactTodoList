@@ -2,7 +2,6 @@ export default class Task {
   constructor(
     id,
     taskName,
-    completed,
     assignedTo,
     priority,
     description,
@@ -14,7 +13,6 @@ export default class Task {
   ) {
     this.id = id;
     this.taskName = taskName;
-    this.completed = completed;
     this.assignedTo = assignedTo;
     this.priority = priority;
     this.description = description;
@@ -23,5 +21,8 @@ export default class Task {
     this.dueDate = dueDate;
     this.completionDate = completionDate;
     this.status = status;
+  }
+  isCompleted() {
+    return this.status == "Done";
   }
 }

@@ -38,8 +38,8 @@ function TodoList() {
   }
 
   console.log("rerendeing full component");
-  const completedTask = tasks.filter((task) => task.completed);
-  const incompletedTask = tasks.filter((task) => !task.completed);
+  const completedTask = tasks.filter((task) => task.isCompleted());
+  const incompletedTask = tasks.filter((task) => !task.isCompleted());
 
   return (
     <div>

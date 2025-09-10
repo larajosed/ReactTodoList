@@ -4,6 +4,7 @@ import { TodoFormContext } from "../context/todoFormContext";
 import todoService from "../services/todoService";
 import "../css/TodoForm.css";
 import { AppThemeContext } from "../context/appThemeContext";
+import Task from "../model/taskModel";
 
 function TodoForm() {
   const {
@@ -58,23 +59,24 @@ function TodoForm() {
 
   const addTask = () => {
     const isCompleted = status === "Done";
-    let taskData = {
-      taskName: taskName,
-      completed: isCompleted,
-      status: status,
-      assignedTo: assignedTo,
-      priority: priority,
-      description: description,
-      note: note,
-      dueDate: dueDate,
-      completionDate: isCompleted ? new Date().toISOString() : null,
-    };
+    let taskData = new Task(
+      null,
+      taskName,
+      assignedTo,
+      priority,
+      description,
+      note,
+      null,
+      null,
+      isCompleted ? new Date().toISOString() : null,
+      status
+    );
 
     if (!isEditing) {
       taskData.creationDate = new Date().toISOString();
     }
     if (isEditing && taskToEdit.id) {
-      taskData = { ...taskData, id: taskToEdit.id };
+      taskData.id = taskToEdit.id;
     }
 
     todoService.addTask(taskData).then(() => {

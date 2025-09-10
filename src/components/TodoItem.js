@@ -37,7 +37,7 @@ function TodoItem({ refresh, task }) {
   };
 
   const taskCardClass = `todoItemCard ${
-    task.completed ? "completedTask" : "incompleteTask"
+    task.isCompleted() ? "completedTask" : "incompleteTask"
   }`;
 
   const moreInfo = (props) => (
@@ -72,7 +72,7 @@ function TodoItem({ refresh, task }) {
           </div>
           <div>
             <strong>Completado: </strong>
-            {task.completed ? "Sí" : "No"}
+            {task.isCompleted() ? "Sí" : "No"}
           </div>
           <div>
             <strong>Asignada a: </strong>
