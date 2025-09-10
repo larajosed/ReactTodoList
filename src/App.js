@@ -9,7 +9,7 @@ import TodoNavbar from "./components/TodoNavbar";
 
 function App() {
   const { theme } = useContext(AppThemeContext);
-
+  const isDarkMode = theme === "dark";
   return (
     <BrowserRouter>
       <div className={`body ${theme}`}>
@@ -17,8 +17,14 @@ function App() {
         <div className={`app-container ${theme}`}>
           <div className={`App ${theme}`}>
             <Routes>
-              <Route path="/" element={<TodoListView />} />
-              <Route path="/dashboard" element={<TodoDashboard />} />
+              <Route
+                path="/"
+                element={<TodoListView isDarkMode={isDarkMode} />}
+              />
+              <Route
+                path="/dashboard"
+                element={<TodoDashboard isDarkMode={isDarkMode} />}
+              />
             </Routes>
           </div>
         </div>

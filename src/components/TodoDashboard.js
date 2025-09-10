@@ -6,7 +6,7 @@ import todoService from "../services/todoService";
 import { Nav } from "react-bootstrap";
 import "../css/TodoDashboard.css";
 
-function TodoDashboard() {
+function TodoDashboard({ isDarkMode }) {
   const [tasks, setTasks] = useState([]);
   const [activeView, setActiveView] = useState("simple");
 
@@ -42,9 +42,9 @@ function TodoDashboard() {
         {activeView === "simple" ? (
           <TodoDashboardSimple tasks={tasks} />
         ) : activeView === "productivity" ? (
-          <TodoDashboardProductivity tasks={tasks} />
+          <TodoDashboardProductivity tasks={tasks} isDarkMode={isDarkMode} />
         ) : activeView === "status" ? (
-          <TodoDashboardStatus tasks={tasks} />
+          <TodoDashboardStatus tasks={tasks} isDarkMode={isDarkMode} />
         ) : null}
       </div>
     </div>
