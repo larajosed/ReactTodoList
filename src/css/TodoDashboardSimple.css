@@ -3,3 +3,19 @@
   height: 300;
   margin-top: 35px;
 }
+
+.custom-tooltip {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.custom-tooltip ul {
+  text-align: left;
+}
+
+.dark .custom-tooltip {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
