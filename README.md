@@ -4,7 +4,7 @@ Una aplicación web de gestión de tareas, construida con React, que te permite 
 
 ## Live Demo👇
 
-https://lnkd.in/dY5Hxsy2
+https://larajosed.github.io/ReactTodoList
 
 ## Características Principales
 
